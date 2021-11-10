@@ -1,0 +1,18 @@
+﻿
+@model ToDoApplication.ViewModels.IndexViewModel;
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Add new todo</h1>
+    @using (Html.BeginForm("AddTodo", "Todo", FormMethod.Post))
+    {
+        @Html.LabelFor(model => model.Todo.Title);
+        @Html.TextBoxFor(model => model.Todo.Title);
+
+        <button type="submit">Press me</button>
+    }
+</body>
+</html>

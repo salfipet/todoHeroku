@@ -1,0 +1,22 @@
+﻿@model ToDoApplication.ViewModels.TodoAssigneeViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @if (Model.AllTodos.Count !=0)
+    {
+        @foreach (var item in Model.AllTodos)
+        {
+            <p>@item.Title</p>
+        }
+        
+    }
+    else
+    {
+        <p>Not found</p>
+    }
+</body>
+</html>

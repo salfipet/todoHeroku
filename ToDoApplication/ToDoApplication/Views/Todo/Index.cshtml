@@ -1,0 +1,60 @@
+﻿@model ToDoApplication.ViewModels.IndexViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Todos for today</h1>
+    <form asp-controller="Todo" asp-action="search" method="post">
+        <label>Search for:</label>
+        <input type="text" name="searchingWord" placeholder="...something like task" />
+        <input type="submit" value="Search" />
+    </form>
+    <form asp-controller="Todo" asp-action="searchDate" method="post">
+        <label>Search for:</label>
+        <input type="datetime-local" name="searchingDate" />
+        <input type="submit" value="Search" />
+
+    </form>
+
+    <a asp-controller="Todo" asp-action="Adding">Add new todo</a><br />
+    <a asp-controller="Assignee" asp-action="Assignees">List of Assignees</a>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Action</th>
+            <th>Done</th>
+            <th>Urgent</th>
+        </tr>
+
+        @foreach (var todo in Model.AllTodos)
+        {
+            <tr>
+                <td>@todo.Id </td>
+                <td>@todo.Title </td>
+                <td>@todo.IsDone </td>
+                <td>@todo.IsUrgent </td>
+                <td>
+                    <form asp-controller="Todo" asp-action="delete" method="post" asp-route-id="@todo.Id">
+                        <input type="submit" value="delete" />
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Todo" asp-action="editing" method="get" asp-route-id="@todo.Id">
+                        <input type="submit" value="edit" />
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Todo" asp-action="TodosAssignee" method="get" asp-route-id="@todo.Id">
+                        <input type="submit" value="see assignee" />
+                    </form>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

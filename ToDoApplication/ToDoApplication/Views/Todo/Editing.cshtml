@@ -1,0 +1,41 @@
+﻿@model ToDoApplication.ViewModels.TodoAssigneeViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Edit Todo</h1>
+    @using (Html.BeginForm("Edit", "Todo", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.Todo.Id);
+        @Html.LabelFor(model => model.Todo.Title);
+        @Html.TextBoxFor(model => model.Todo.Title);
+
+        @Html.LabelFor(model => model.Todo.IsUrgent);
+        @Html.CheckBoxFor(model => model.Todo.IsUrgent);
+
+        @Html.LabelFor(model => model.Todo.IsDone);
+        @Html.CheckBoxFor(model => model.Todo.IsDone);
+
+        @Html.LabelFor(model => model.Todo.CreatedAt);
+        @Html.EditorFor(model => model.Todo.CreatedAt)
+
+        @Html.LabelFor(model => model.Todo.DueAt);
+        @Html.EditorFor(model => model.Todo.DueAt)
+
+        <select name="assId">
+            @foreach (var item in Model.AllAssignees)
+            {
+                <option value="@item.Id">@item.Name</option>
+            }
+        </select>
+
+        <button type="submit">Press me</button>
+        <a asp-controller="Todo" asp-action="Index">Cancel</a><br />
+    }
+
+
+</body>
+</html>

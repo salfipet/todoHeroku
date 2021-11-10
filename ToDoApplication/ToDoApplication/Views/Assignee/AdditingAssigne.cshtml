@@ -1,0 +1,22 @@
+﻿
+@model ToDoApplication.ViewModels.AssigneViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Add new Assignee</h1>
+    @using (Html.BeginForm("AddAssigne", "Assignee", FormMethod.Post))
+    {
+        @Html.LabelFor(model => model.Assignee.Name);
+        @Html.TextBoxFor(model => model.Assignee.Name);
+
+        @Html.LabelFor(model => model.Assignee.Email);
+        @Html.TextBoxFor(model => model.Assignee.Email);
+
+        <button type="submit">Press me</button>
+    }
+</body>
+</html>

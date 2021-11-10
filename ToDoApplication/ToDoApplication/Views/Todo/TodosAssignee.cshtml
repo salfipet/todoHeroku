@@ -1,0 +1,19 @@
+﻿@model ToDoApplication.ViewModels.TodoAssigneeViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @if (Model.Assignee is not null)
+    {
+       <p>@Model.Assignee.Name</p>
+
+    }
+    else
+    {
+        <p>Not found</p>
+    }
+</body>
+</html>
